@@ -40,6 +40,21 @@
         li {
             margin-bottom: 10px;
         }
+        html {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            height: 50px; /* Adjust this height based on the actual height of your footer */
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -84,6 +99,9 @@
     <div class="container my-4">
         <div class="text-center mb-4">
             <h1>Jack Caldwell</h1>
+            <div class="text-center my-3">
+                <a href="files/Jack_Caldwell_Resume.pdf" download="Jack_Caldwell_Resume" class="btn btn-light" style="border-color: #ffffff; color: #121212;">Download Resume</a>
+            </div>
             <p>Last Updated on 28th August 2023</p>
             <p>
                 <a href="http://www.linkedin.com/in/jack-caldwell">LinkedIn</a> | 
@@ -94,7 +112,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h2 class="section-heading">Education</h2>
                 <h3>Queen's University</h3>
                 <p>MASc in Electrical and Computer Engineering<br>Dec 2021 | Kingston, ON<br>Cum. GPA: 4.14</p>
@@ -118,7 +136,7 @@
                 <p>2020 - Top 9/1029, Code Life Ventilator Challenge</p>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <h2 class="section-heading">Work Experience</h2>
                 <h3>MDA | Intermediate MTS Engineer</h3>
                 <p>Feb 2022 - Present | Brampton, ON</p>
@@ -142,15 +160,12 @@
                 <ul>
                     <li>"Towards efficient learning-based model predictive control via feedback linearization and gaussian process regression." - IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021</li>
                 </ul>
-
-                <div class="text-center my-3">
-                    <a href="Jack_Caldwell_Resume.pdf" download="Jack_Caldwell_Resume" class="btn btn-primary">Download Resume</a>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="text-center">
+    <!-- Start of footer -->
+    <div class="footer text-center">
         <p>
             <a href="http://www.linkedin.com/in/jack-caldwell" style="margin-right: 10px;">
                 <img src="images/LI-In-Bug.png" alt="LinkedIn" style="width:30px; height:30px;">
@@ -161,6 +176,7 @@
             </a>
         </p>
     </div>
+    <!-- End of footer -->
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

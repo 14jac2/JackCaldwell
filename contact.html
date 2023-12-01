@@ -33,6 +33,21 @@
         a.contact-link:hover {
             color: #ffffff;
         }
+        html {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            height: 50px; /* Adjust this height based on the actual height of your footer */
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -102,7 +117,8 @@
         </div>
     </div>
 
-    <div class="text-center">
+    <!-- Start of footer -->
+    <div class="footer text-center">
         <p>
             <a href="http://www.linkedin.com/in/jack-caldwell" style="margin-right: 10px;">
                 <img src="images/LI-In-Bug.png" alt="LinkedIn" style="width:30px; height:30px;">
@@ -113,6 +129,7 @@
             </a>
         </p>
     </div>
+    <!-- End of footer -->
     
     <!-- JavaScript -->
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script> <!-- Replace with your Font Awesome kit -->
