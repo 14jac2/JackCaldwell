@@ -13,9 +13,6 @@
             background-color: #121212; /* Dark background */
             color: #ffffff; /* Light text */
         }
-        a {
-            color: #ffffff; /* Light text for links */
-        }
         .navbar-dark .navbar-nav .nav-link {
             color: #ffffff; /* Light text in navbar */
         }
@@ -30,8 +27,28 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        h2, h3, h4 {
-            color: #ffffff;
+        body {
+            background-color: #2c2a2a; /* Dark background */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff; /* Light text */
+            position: relative; /* Ensures the overlay is positioned relative to the body */
+            margin: 0; /* Remove default margin */
+            font-family: Arial, sans-serif;
+        }
+        body::before {
+            content: "";
+            position: absolute; /* Position the overlay */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: -1; /* Ensures the overlay is behind the content */
+        }
+        a, h1, h4 {
+            color: #ffffff; /* Ensuring all text is light colored */
         }
         ul {
             list-style-type: none;
@@ -81,10 +98,6 @@
 
         .publications-list li span.title {
             font-style: italic; /* Italicize the title */
-        }
-
-        .publications-list li span.details {
-            /* Regular font for publication details */
         }
     </style>
 </head>
