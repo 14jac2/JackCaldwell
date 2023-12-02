@@ -55,6 +55,37 @@
             height: 50px; /* Adjust this height based on the actual height of your footer */
             width: 100%;
         }
+        .coursework-list li {
+            margin-bottom: 1px; /* Adjust this value as needed */
+        }
+        .experience-list {
+            list-style-type: disc; /* This will add bullet points */
+            padding-left: 20px; /* Add padding to align the bullets properly */
+        }
+        .publications-list {
+            list-style-type: none; /* No bullet points */
+            padding-left: 0;
+        }
+        .publications-list li {
+            margin-bottom: 10px; /* Space between entries */
+        }
+
+        .publications-list li::before {
+            content: "[" counter(item) "] "; /* Numbering for each publication */
+            counter-increment: item;
+        }
+
+        .publications-list li span.authors {
+            font-weight: bold; /* Bold for authors' names */
+        }
+
+        .publications-list li span.title {
+            font-style: italic; /* Italicize the title */
+        }
+
+        .publications-list li span.details {
+            /* Regular font for publication details */
+        }
     </style>
 </head>
 
@@ -112,7 +143,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <h2 class="section-heading">Education</h2>
                 <h3>Queen's University</h3>
                 <p>MASc in Electrical and Computer Engineering<br>Dec 2021 | Kingston, ON<br>Cum. GPA: 4.14</p>
@@ -120,45 +151,85 @@
                 <p>BASc in Electrical Engineering with Professional Internship<br>April 2019 | Kingston, ON</p>
 
                 <h2 class="section-heading">Select Coursework</h2>
-                <ul>
+                <h4>Graduate</h4>
+                <ul class="coursework-list">
                     <li>Vehicle Control and Navigation</li>
                     <li>Design for Robots and Telerobots</li>
                     <li>Machine Vision</li>
                     <li>Machine Learning/Deep Learning</li>
-                    <!-- Additional undergraduate courses -->
                 </ul>
-
+                <h4>Undergraduate</h4>
+                <ul class="coursework-list">
+                    <li>Bioinformatic Analysis</li>
+                    <li>Modelling and Computer Control</li>
+                    <li>Introduction to Robotics</li>
+                    <li>A.I. and Interactive Systems</li>
+                    <li>Image Processing and Computer Vision</li>
+                    <li>Sensors and Actuators</li>
+                    <li>Linear Control Systems</li>
+                    <li>Discrete-Time Signals and Systems</li>
+                    <li>Probability and Random Processes</li>
+                    <li>Microprocessor Systems</li>
+                    <li>Computer Architecture</li>
+                    <li>Digital Systems</li>
+                    <li>Fundamentals of Information Structures</li>
+                    <li>Intro to Computer Programming for Engineers</li>
+                </ul>
                 <h2 class="section-heading">Skills</h2>
                 <p><strong>Programming:</strong> Python, Matlab, LaTeX, C++ (Over 5000 lines); C (Over 1000 lines); Familiar with Java, Assembly, PLEXIL.</p>
                 <p><strong>Development Environment:</strong> Proficient in GIT, VS Code, Arduino, Linux, ROS, Shell; Familiar with Eclipse, Visual Studio, Gazebo, CAD.</p>
-
-                <h2 class="section-heading">Awards</h2>
-                <p>2020 - Top 9/1029, Code Life Ventilator Challenge</p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h2 class="section-heading">Work Experience</h2>
                 <h3>MDA | Intermediate MTS Engineer</h3>
                 <p>Feb 2022 - Present | Brampton, ON</p>
-                <ul>
+                <ul class="experience-list">
                     <li>Autonomy and AI development for the Canadarm3.</li>
                     <li>Subject matter expert for model-based collision avoidance.</li>
-                    <!-- Additional points as per resume -->
                 </ul>
-
-                <!-- Additional work experiences as per resume -->
+                <h3>Offroad Robotics | Research Assistant</h3>
+                <p>Sep 2019 - Dec 2021 | Kingston, ON</p>
+                <ul class="experience-list">
+                    <li>Design of <b>82×</b> more computationally efficient learning-based (via Gaussian
+                        Process Regression) nonlinear model predictive controllers (Python and C++).</li>
+                    <li>Researching and applying robotic manipulator control algorithms on a Kubota
+                        R520S robotic loader (Python, C++, ROS).</li>
+                </ul>
+                <h3>MacLean Engineering | Simulation Engineering Specialist</h3>
+                <p>May - Dec 2019 | Remote </p>
+                <ul class="experience-list">
+                    <li>Modelling of mining equipment for automation (C++, Python, Gazebo/ROS).</li>
+                    <li>Forward kinematics and controller development with ROS framework.</li>
+                </ul>
+                <h3>Offroad Robotics | Research Assistant</h3>
+                <p>May 2018 – Sep 2018 | Kingston, ON</p>
+                <ul class="experience-list">
+                    <li>Model MacLean Engineering machines and prototype systems in Gazebo/ROS</li>
+                    <li>Design electrical control system, and build/test tele-operated prototype, since
+                        used in multiple Master’s theses.</li>
+                </ul>
+                <h3>MacLean Engineering | Electrical Designer</h3>
+                <p>May 2017 – May 2018 | Colligwood, ON </p>
+                <ul class="experience-list">
+                    <li>Designed (Auto CAD) electrical control systems for 15 machine capital orders.</li>
+                </ul>
 
                 <h2 class="section-heading">Teaching Experience</h2>
                 <h3>Queen's University | Teaching Assistant</h3>
-                <ul>
+                <ul class="experience-list">
                     <li>ELEC490 Electrical and Computer Engineering (ECE) Project: Supervised 16 teams of 4 students.</li>
                     <li>APSC142 Introduction to Computer Programming for Engineers: Test marking and feedback.</li>
-                    <!-- Additional teaching experiences as per resume -->
                 </ul>
-
+                <h2 class="section-heading">Awards</h2>
+                    <p>2020 - Top 9/1029, Code Life Ventilator Challenge</p>
                 <h2 class="section-heading">Publications</h2>
-                <ul>
-                    <li>"Towards efficient learning-based model predictive control via feedback linearization and gaussian process regression." - IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021</li>
+                <ul class="publications-list">
+                    <li>
+                        <a href="https://qspace.library.queensu.ca/items/bcc2321e-a3b7-4ed1-93e4-c80e0dd480ce">
+                            "Towards efficient learning-based model predictive control via feedback linearization and gaussian process regression."
+                        </a> - IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
+                    </li>
                 </ul>
             </div>
         </div>
