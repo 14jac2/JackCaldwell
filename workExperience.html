@@ -36,11 +36,14 @@
         a, h1, h4 {
             color: #ffffff; /* Ensuring all text is light colored */
         }
+        .navbar-dark .navbar-nav .nav-item .nav-link.active {
+            color: #ffffff; /* Dark color for text */
+        }
         .navbar-dark .navbar-nav .nav-link {
-            color: #9E9E9E; /* Light text in navbar */
+            color: #9E9E9E; /* Grey text in navbar */
         }
         .navbar-dark .navbar-nav .nav-link:hover {
-            color: #ffffff; /* Grey color on hover for links */
+            color: #ffffff; /* Light color on hover for links */
         }
         .container, .navbar {
             border-color: #2C2C2C; /* Dark borders for elements */
@@ -60,16 +63,12 @@
             flex-direction: column;
             min-height: 100%;
         }
-        .content {
+        .container {
             flex: 1;
         }
         .footer {
             height: 50px; /* Adjust this height based on the actual height of your footer */
             width: 100%;
-        }
-        .nav-link.active {
-            color: #ffffff; /* Or any color to indicate active state */
-            background-color: #ffffff; /* Optional: background color for active state */
         }
     </style>
 </head>
@@ -113,7 +112,7 @@
     <!-- End of nav -->
 
     <!-- Start of main -->
-    <div class="content my-4">
+    <div class="container my-4">
         <h2 class="text-center">Featured Work Experience Coming Soon!</h2>
         <div class="row">
             <!-- Experience 1 -->
@@ -163,6 +162,9 @@
             var navProjects = document.getElementById('projects');
             var navWorkExperience = document.getElementById('workExperience');
             var navPublications = document.getElementById('publications');
+            var navResume = document.getElementById('resume');
+            var navAbout = document.getElementById('about');
+            var navContact = document.getElementById('contact');
     
             // Check the URL and add 'active' class to the corresponding nav-link
             if (url.includes('projects.html')) {
@@ -171,6 +173,12 @@
                 navWorkExperience.classList.add('active');
             } else if (url.includes('publications.html')) {
                 navPublications.classList.add('active');
+            } else if (url.includes('contact.html')) {
+                navResume.classList.add('active');
+            } else if (url.includes('about.html')) {
+                navAbout.classList.add('active');
+            } else if (url.includes('contact.html')) {
+                navContact.classList.add('active');
             }
         });
     </script>
