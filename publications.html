@@ -10,7 +10,7 @@
     <style>
         body {
             background-color: #121212; /* Dark background */
-            background-image: url('images/HumanoidRobot.png'); /* Path to your faded image */
+            background-image: url('images/Moon.png'); /* Path to your faded image */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -19,22 +19,15 @@
             margin: 0; /* Remove default margin */
             font-family: Arial, sans-serif;
         }
-        body::before {
-            content: "";
-            position: absolute; /* Position the overlay */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-            z-index: -1; /* Ensures the overlay is behind the content */
-        }
         a, h1, h4 {
             color: #ffffff; /* Ensuring all text is light colored */
         }
         h2 {
             margin: 10px;
             margin-bottom: 50px;
+        }
+        .navbar-dark .navbar-nav .nav-item .nav-link.active {
+            color: #ffffff; /* Dark color for text */
         }
         .navbar-dark .navbar-nav .nav-link {
             color: #9E9E9E; /* Light text in navbar */
