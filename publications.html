@@ -10,11 +10,7 @@
     <style>
         body {
             background-color: #121212; /* Dark background */
-            color: #ffffff; /* Light text */
-        }
-        body {
-            background-color: #2c2a2a; /* Dark background */
-            background-image: url('images/Moon.png'); /* Path to your image */
+            background-image: url('images/HumanoidRobot.png'); /* Path to your faded image */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -30,17 +26,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.75); /* Semi-transparent black overlay */
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
             z-index: -1; /* Ensures the overlay is behind the content */
         }
         a, h1, h4 {
             color: #ffffff; /* Ensuring all text is light colored */
         }
         h2 {
-            margin-bottom: 20px;
-        }
-        .navbar-dark .navbar-nav .nav-item .nav-link.active {
-            color: #ffffff; /* Dark color for text */
+            margin: 10px;
+            margin-bottom: 50px;
         }
         .navbar-dark .navbar-nav .nav-link {
             color: #9E9E9E; /* Light text in navbar */
@@ -51,12 +45,8 @@
         .container, .navbar {
             border-color: #2C2C2C; /* Dark borders for elements */
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 0px;
+        i {
+            font-size: 4em;
         }
         html {
             height: 100%;
@@ -72,6 +62,9 @@
         .footer {
             height: 50px; /* Adjust this height based on the actual height of your footer */
             width: 100%;
+        }
+        .project-description {
+            min-height: 100px; /* Adjust this value based on your content */
         }
     </style>
 </head>
@@ -115,23 +108,43 @@
     <!-- End of nav -->
 
     <!-- Start of main -->
-    <div class="content my-4">
+    <div class="content my-4" style="margin: 0 auto; width: 90%">
         <h2 class="text-center">Featured Publications</h2>
         <div class="row">
             <!-- Project 1 -->
             <div class="col-md-6 text-center">
                 <h4>IROS</h4>
-                <p>This paper presents a learning-based Model Pre- dictive Control (MPC) methodology incorporating nonlinear predictions with robotics applications in mind. In particular, MPC is combined with feedback linearization for computational efficiency and Gaussian Process Regression (GPR) is used to model unknown system dynamics and nonlinearities. In this method, MPC predicts future states by leveraging a GPR model and optimizes a sequence of inputs over feedback linearized states. The controller was tested in simulation by using a two- link planar robot in the presence of model uncertainty. With respect to trajectory-tracking error, the proposed controller outperformed a conventional Proportional-Derivative Inverse Dynamics controller and a GPR-augmented version. Although a fully nonlinear MPC formulation achieved slightly better performance, the proposed controller had an average control calculation time that was 82× faster.</p>
+                <div class="project-description">
+                    <p>This paper presents a learning-based Model Pre- dictive Control (MPC) methodology incorporating nonlinear predictions with robotics applications in mind. In particular, MPC is combined with feedback linearization for computational efficiency and Gaussian Process Regression (GPR) is used to model unknown system dynamics and nonlinearities. In this method, MPC predicts future states by leveraging a GPR model and optimizes a sequence of inputs over feedback linearized states. The controller was tested in simulation by using a two- link planar robot in the presence of model uncertainty. With respect to trajectory-tracking error, the proposed controller outperformed a conventional Proportional-Derivative Inverse Dynamics controller and a GPR-augmented version. Although a fully nonlinear MPC formulation achieved slightly better performance, the proposed controller had an average control calculation time that was 82× faster.</p>
+                </div>
                 <a href="https://qspace.library.queensu.ca/items/bcc2321e-a3b7-4ed1-93e4-c80e0dd480ce" class="btn btn-outline-light">Read More</a>
             </div>
-
+            <div class="col-md-6 text-center">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img src="images/controllers_20_offset.gif" class="img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+                </div>
+            </div>
+        </div>
+        <p>
+        </p>
+        <div class="row">
             <!-- Project 2 -->
             <div class="col-md-6 text-center">
                 <h4>Master's Thesis</h4>
+                <div class="project-description">
                 <p>Large-scale hydraulic manipulators are notoriously difficult to control due to the prevalent nonlinear and complex dynamics. As a result, automation and control of such machines has only proceeded as far as tele-operation. Recently, research has explored the use of Gaussian Process Regression (GPR) to enhance the modelling of manipulator dynamics, ultimately enabling more accurate control. Most control solutions have employed reactive control techniques, such as Inverse Dynamics controllers, for manipulator controllers. More recently, Model Predictive Controllers (MPC) have been explored for their foresight and constraint handling. Unfortunately, nonlinear Model Predictive Controllers pose a large computational burden, rendering these solutions infeasible for real-time applications.
                     This work presents a learning-based MPC methodology incorporating nonlinear predictions with robotics applications in mind. In particular, MPC is combined with feedback linearization for computational efficiency and GPR is used to model unknown system dynamics and nonlinearities. In this method, MPC predicts future states by leveraging a GPR model and optimizes a sequence of inputs over feedback linearized states. This controller was tested in simulation by using a two-link planar robot in the presence of model uncertainty. With respect to trajectory-tracking error, the proposed controller outperformed a conventional Proportional-Derivative (PD) Inverse Dynamics (ID) controller and a GPR-augmented ID controller. Although a fully nonlinear MPC formulation achieved slightly better performance, the proposed controller had an average control calculation time that was 82x faster.
                     With the intent of controller validation, control infrastructure was developed for a hydraulically actuated Kubota R520S robotic loader. Field trials were performed for dynamics regression and controller testing. A cascade control system was developed, with an outer-loop position controller and inner-loop torque controller. The torque controller was validated on the system, though hardware constraints limited the controller bandwidth. Differential evolution algorithm was leveraged to optimize a dynamics regression trajectory. A PD feedback controller was employed for dynamics parameter regression trial trajectory tracking. The dynamics parameters were regressed, resulting in a torque estimation root-mean-square percentage error of 41%. Finally, a PD ID controller was developed, tested, and validated on the robotic system.</p>
+                </div>
                 <a href="https://qspace.library.queensu.ca/items/03ac29a3-b2a6-42fe-b4bd-aeed8d4a2cf5" class="btn btn-outline-light">Read More</a>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="col-lg mb-lg-4">
+                    <img src="images/Loader.PNG" class="img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+                <p>
+                </p>
+                    <img src="images/LoaderOld.jpg" class="img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+                </div>
             </div>
         </div>
     </div>
