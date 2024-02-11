@@ -34,18 +34,26 @@
         .noButton:hover {
             opacity: 0.5; /* Reduce opacity on hover */
         }
+        .centered-container {
+            position: absolute; /* Positioning method */
+            top: 50%; /* Position from the top */
+            left: 50%; /* Position from the left */
+            transform: translate(-50%, -50%); /* Move the container up and left by half its width and height */
+            text-align: center; /* Horizontally center the content inside the container */
+        }
     </style>
 </head>
-<body>
 
-    <h1 id="mainText" class="text-center"> Will you be my valentine? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;"> </h1> 
-    <div class="button-container">
-        <button id="yesButton" class="yesButton"> Yes! </button>
-        <button id="noButton" class="noButton"> No :( </button>
-    </div>
-    
-    <div class="col-lg mb-lg-4">
-        <img src="images/valentinesCouple.PNG" class="img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+<body>
+    <div class="centered-container">
+        <h1 id="mainText" class="text-center"> Will you be my valentine? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;"> </h1> 
+        <div class="button-container">
+            <button id="yesButton" class="yesButton"> Yes! </button>
+            <button id="noButton" class="noButton"> No :( </button>
+        </div>
+        <div class="col-lg mb-lg-4">
+            <img src="images/valentinesCouple.PNG" class="img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+        </div>
     </div>
 
     <script>
@@ -76,7 +84,17 @@
             }
             else if(iterationCount == 3)
             {
-                mainText.innerHTML = 'Im confused, are you confused?';
+                mainText.innerHTML = 'Im confused, are you confused? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
+            }
+            else if(iterationCount == 4)
+            {
+                mainText.innerHTML = 'What the heck. Is your name Nancy?';
+            }
+            else if(iterationCount == 5)
+            {
+                var noButton = document.getElementById('noButton');
+                noButton.style.fontSize = '1px';
+                mainText.innerHTML = 'I dont believe you.';
             }
         }
 
