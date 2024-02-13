@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentines</title>
+    <title>Jack Caldwell</title>
     <style>
 
         /* Styling for the buttons */
@@ -49,7 +49,7 @@
             <button id="noButton" class="noButton"> No :( </button>
         </div>
         <div class="col-lg mb-lg-4">
-            <img src="images/valentinesCouple.PNG" class="img-fluid" alt="" style="max-width: 50%; max-height: 50%;">
+            <img id="mainImage" src="images/valentinesCouple.PNG" class="img-fluid" alt="" style="max-width: 50%; max-height: 50%;">
         </div>
     </div>
 
@@ -73,25 +73,30 @@
             otherButton.style.fontSize = newFontSize + 'px';
             if(iterationCount == 1)
             {
-                mainText.innerHTML = 'Are you sure? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
+                mainText.innerHTML = 'Are you sure? We are cute :) <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
+                mainImage.src = 'images/Elevator.jpg';
             }
             else if(iterationCount == 2)
             {
                 mainText.innerHTML = 'So that means you will be my valentine? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
+                mainImage.src = 'images/Asia.jpg';
             }
             else if(iterationCount == 3)
             {
-                mainText.innerHTML = 'Im confused, are you confused? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
+                mainText.innerHTML = 'Im confused, are you confused? Confused appa <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
+                mainImage.src = 'images/Appa.jpg';
             }
             else if(iterationCount == 4)
             {
                 mainText.innerHTML = 'What the heck. Is your name Nancy?';
+                mainImage.src = 'images/Sad.jpg';
             }
             else if(iterationCount == 5)
             {
                 var noButton = document.getElementById('noButton');
                 noButton.style.fontSize = '1px';
-                mainText.innerHTML = 'I dont believe you.';
+                mainText.innerHTML = 'I dont believe you. Click yes and we can grow old together :)';
+                mainImage.src = 'images/Old.jpg';
             }
         }
 
