@@ -1,117 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jack Caldwell</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
-
-        /* Styling for the buttons */
-        .yesButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
-            transition: all 0.3s ease; /* Smooth transition for size change */
-            background-color: #4CAF50; /* Green background for button 1 */
-            color: white; /* White text */
+        body {
+            background-image: url('images/LonelyRobot.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: left;
+            color: #ffffff; 
+            position: relative;
+            margin: 0; 
+            font-family: Arial, sans-serif;
         }
-        .noButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
-            transition: all 0.3s ease; /* Smooth transition for size change */
-            background-color: #FF0000; /* Green background for button 1 */
-            color: white; /* White text */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: -1; /* Ensures the overlay is behind the content */
         }
-        /* Style for button hover effect */
-        .yesButton:hover {
-            opacity: 0.9; /* Reduce opacity on hover */
-            cursor: pointer;
+        a, h1, h4 {
+            color: #ffffff;
         }
-        .noButton:hover {
-            opacity: 0.5; /* Reduce opacity on hover */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #9E9E9E;
         }
-        .centered-container {
-            position: absolute; /* Positioning method */
-            top: 50%; /* Position from the top */
-            left: 50%; /* Position from the left */
-            transform: translate(-50%, -50%); /* Move the container up and left by half its width and height */
-            text-align: center; /* Horizontally center the content inside the container */
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #ffffff;
+        }
+        .container, .navbar {
+            border-color: #2C2C2C;
+        }
+        i {
+            font-size: 4em;
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        .container {
+            flex: 1;
+        }
+        .footer {
+            height: 50px;
+            width: 100%;
+        }
+        .instagram-post-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex;
+            height: flex;
+        }
+        .instagram-media {
+            max-width: 540px; 
+            width: 100%;
+            margin: auto;
         }
     </style>
 </head>
 
+
 <body>
-    <div class="centered-container">
-        <h1 id="mainText" class="text-center"> Mrs. Patutie, will you be my valentine? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;"> </h1> 
-        <div class="button-container">
-            <button id="yesButton" class="yesButton"> Yes! </button>
-            <button id="noButton" class="noButton"> No :( </button>
+    <!-- Start of nav -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark ">
+        <div class="container-fluid">
+            <div class="mx-4">
+                <a class="navbar-brand" href="index.html">Jack Caldwell</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="workExperience.html">Work Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="publications.html">Publications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-lg mb-lg-4">
-            <img id="mainImage" src="images/valentinesCouple.PNG" class="img-fluid" alt="" style="max-width: 50%; max-height: 50%;">
+    </nav>
+    <!-- End of nav -->
+
+    <!-- Start of main -->
+    <div class="container my-4 ">
+        <div class="row justify-content-center">
+            <div class="col-lg mx-2 align-self-center">
+                <div class="my-3">
+                    <h1 class="text-center">Who am I</h1>
+                    <p>I am an enthusiastic learner with a passion for innovation and disruptive technologies. My studies have primarily focused on robotic control and AI, but my interests range from ambient technology software development to robotics hardware design. 
+
+                        I have prototyping experience in team based environments, and thrive working with large multi-disciplinary teams. I have practical experience in control systems, and have enjoyed developing novel learning-based manipulator controllers as a part of my master's thesis and subsequent publications. 
+                        
+                        More recently, I have had the opportunity to design and prototype autonomy systems for the next generation Canadarm. This work is truly out of this world!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg mb-lg-4"></div>
+            <div class="col-lg mb-lg-4"></div>
         </div>
     </div>
 
-    <script>
-        var iterationCount = 0;
-        function yesClickHandler(event) {
-            window.location.href = 'sheSaidYes.html?iterationCount=' + iterationCount;;
-        }
-        function noClickHandler(event) {
-            iterationCount++
-            var otherButton = document.getElementById('yesButton');
-            var mainText = document.getElementById('mainText');
+    <div class="container my-4 ">
+        <div class="row justify-content-center">
+            <div class="col-lg mx-2 align-self-center">
+                <div class="my-3">
+                    <div class="text-center mb-4">
+                        <h1>Recent News</h1>
+                        <p>I really enjoyed giving a talk at Queen's University's Ingenuity Labs research institute on my work at MDA.</p>
+                        <div class="instagram-post-container">
+                        <blockquote class="instagram-media" 
+                        data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/C2SdX17rpQl/?utm_source=ig_embed&amp;utm_campaign=loading" 
+                        data-instgrm-version="14" 
+                        style=" background:#FFF; border:0; border-radius:10px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                        <div style="padding:16px;"> 
+                            <a href="https://www.instagram.com/p/C2SdX17rpQl/?utm_source=ig_embed&amp;utm_campaign=loading" 
+                            style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" 
+                            target="_blank"> 
+                            <div style=" display: flex; flex-direction: row; align-items: center;"> 
+                                <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> 
+                                <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> 
+                                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> 
+                                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                                </div>
+                            </div>
+                            <div style="padding: 19% 0;"></div> 
+                            <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                                            <g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div style="padding-top: 8px;"> 
+                                <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+                            </div>
+                            <div style="padding: 12.5% 0;"></div> 
+                            <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                                <div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> 
+                                <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> 
+                                <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+                            </div>
+                            <div style="margin-left: 8px;"> 
+                                <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> 
+                                <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+                            </div>
+                            <div style="margin-left: auto;"> 
+                                <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> 
+                                <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> 
+                                <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+                            </div>
+                        </div> 
+                        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> 
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> 
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
+                        </div>
+                    </a>
+                    <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                        <a href="https://www.instagram.com/p/C2SdX17rpQl/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Ingenuity Labs Research Institute at Queen&#39;s University (@ingenuity.labs)</a>
+                    </p>
+                </div>
+            </blockquote>
+        </div>
+             <script async src="//www.instagram.com/embed.js"></script>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+    </div> 
 
-            // Get the current font size of the button and convert it to a number
-            var currentFontSize = parseInt(window.getComputedStyle(otherButton).fontSize);
+    <div class="my-4">
+        <div class="text-center mb-4">
+            <h1>My Skills</h1>
+        </div>
+        <div class="row ">
+            <style>
+                i {
+                    font-size: 4em;
+                }
+            </style>
+            <!-- Skills -->
+            <div class="col">
+                <div class="text-center">
+                    <h4>C/C++</h4>
+                    <img src="images/c-original.svg" class="img-fluid" alt="" srcset="" width="100">
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <h4>ROS</h4>
+                    <img src="images/ros.png" class="img-fluid" alt="" srcset="" width="100" height="600">
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <h4>Python</h4>
+                    <img src="images/python-original.svg" class="img-fluid" alt="" srcset="" width="100">
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <h4>Git</h4>
+                    <img src="images/git-plain.svg" class="img-fluid" alt="" srcset="" width="100">
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <h4>Latex</h4>
+                    <img src="images/latex-original.svg" class="img-fluid" alt="" srcset="" width="100">
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <h4>Matlab</h4>
+                    <img src="images/matlab-original.svg" class="img-fluid" alt="" srcset="" width="100">
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <h4>Arduino</h4>
+                    <img src="images/arduino-original.svg" class="img-fluid" alt="" srcset="" width="100">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of main -->
 
-            // Set the new font size by adding 5 pixels to the current size
-            var newFontSize = currentFontSize + 20;
-
-            // Increase size of the clicked button
-            otherButton.style.fontSize = newFontSize + 'px';
-            if(iterationCount == 1)
-            {
-                mainText.innerHTML = 'Are you sure? We are cute :) <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
-                mainImage.src = 'images/Elevator.jpg';
-            }
-            else if(iterationCount == 2)
-            {
-                mainText.innerHTML = 'So that means you will be my valentine? <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
-                mainImage.src = 'images/Asia.jpg';
-            }
-            else if(iterationCount == 3)
-            {
-                mainText.innerHTML = 'Im confused, are you confused? Confused appa <img src="images/heart.PNG" class="img-fluid" alt="" style="max-width: 15%;">';
-                mainImage.src = 'images/Appa.jpg';
-            }
-            else if(iterationCount == 4)
-            {
-                mainText.innerHTML = 'What the heck. Is your name Nancy?';
-                mainImage.src = 'images/Sad.jpg';
-            }
-            else if(iterationCount == 5)
-            {
-                var noButton = document.getElementById('noButton');
-                noButton.style.fontSize = '1px';
-                mainText.innerHTML = 'I dont believe you. Click yes and we can grow old together :)';
-                mainImage.src = 'images/Old.jpg';
-            }
-        }
-
-        // Attach event listener to the document to handle button clicks using event delegation
-        document.addEventListener('click', function(event) {
-            // Check if the clicked element is a button
-            if (event.target.classList.contains('yesButton')) {
-                // Call the buttonClickHandler function
-                yesClickHandler(event);
-            }
-            if (event.target.classList.contains('noButton')) {
-                // Call the buttonClickHandler function
-                noClickHandler(event);
-            }
-        });
-    </script>
+    <!-- Start of footer -->
+    <div class="footer text-center">
+        <p>
+            <a href="http://www.linkedin.com/in/jack-caldwell" style="margin-right: 10px;">
+                <img src="images/LI-In-Bug.png" alt="LinkedIn" style="width:30px; height:30px;">
+            </a>
+            905.505.1818
+            <a href="mailto:jack.caldwell@queensu.ca" style="margin-left: 10px;">
+                <img src="images/emailIcon.png" alt="Email" style="width:30px; height:30px;">
+            </a>
+        </p>
+    </div>
+    <!-- End of footer -->
 </body>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
+
 </html>
