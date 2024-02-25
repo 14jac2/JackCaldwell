@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheSaidYes!</title>
+    <style>
+        body {
+            background-color: #ffffff; /* light background */
+            background-image: url('images/valentinesBackground.PNG'); /* Path to your faded image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #000000; /* dark text */
+            position: relative; /* Ensures the overlay is positioned relative to the body */
+            margin: 0; /* Remove default margin */
+            font-family: Arial, sans-serif;
+        }
+        .centered-container {
+            margin: 0; /* Remove default margin */
+            position: relative; /* Positioning method */
+            top: 50%; /* Position from the top */
+            left: 50%; /* Position from the left */
+            transform: translate(-50%, 25%); /* Move the container up and left by half its width and height */
+            text-align: center; /* Horizontally center the content inside the container */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centered-container">
+        <h1>She said Yes!!!! Yayyyy!!!</h1>
+        <h2 id="mainText" class="text-center"></h2>
+        <p>I love you gingy! I'm the luckiest person alive :)</p>
+        <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+    </div>
+
+    <script>
+        // Function to get the value of a URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    
+        // Get the iterationCount value from the URL
+        var iterationCount = parseInt(getParameterByName('iterationCount'));
+        if(iterationCount == 0)
+        {
+            mainText.innerHTML = 'And on the first try! Didnt even want to explore the no button eh?';
+        }
+        if(iterationCount == 1)
+        {
+            mainText.innerHTML = 'Second times the charm! Hehe I tricked you ;)';
+        }
+        if(iterationCount == 2)
+        {
+            mainText.innerHTML = 'Third times the charm! Took less convincing then I thought ;)';
+        }
+        if(iterationCount == 3)
+        {
+            mainText.innerHTML = 'Lets be confused together! :)';
+        }
+        if(iterationCount == 4)
+        {
+            mainText.innerHTML = 'Hehe got you! ;)';
+        }
+        if(iterationCount > 4)
+        {
+            mainText.innerHTML = 'Fiiiiinaally, I knew I could convince you ;) hehe';
+        }
+    </script>
+</body>
+</html>
