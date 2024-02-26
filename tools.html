@@ -133,8 +133,12 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="card-title">Rent or Buy?</h1>
+                        <h1 class="card-title">Yearly Sunk Cost</h1>
                         <form id="mortgageForm">
+                            <div class="form-group">
+                                <label for="downPayment" class="form-label">Down Payment:</label>
+                                <input type="text" id="downPayment" name="downPayment" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label for="mortgageRate" class="form-label">Mortgage Rate:</label>
                                 <input type="text" id="mortgageRate" name="mortgageRate" class="form-control">
@@ -169,23 +173,39 @@
     <script>
         document.getElementById('mortgageForm').addEventListener('submit', function (event) {
             event.preventDefault();
+            let downPayment = parseFloat(document.getElementById('downPayment').value);
             let mortgageRate = parseFloat(document.getElementById('mortgageRate').value);
             let mortgageType = document.getElementById('mortgageType').value;
             let houseValue = parseFloat(document.getElementById('houseValue').value);
             let propertyTax = parseFloat(document.getElementById('propertyTax').value);
 
             // Perform calculation based on mortgage type
-            let mortgagePayment;
+            let sunkCost;
             if (mortgageType === 'fixed') {
-                mortgagePayment = (houseValue * (mortgageRate / 100)) / 12;
+                let interest = (houseValue - downPayment)*(mortgageRate / 100);
+                let tax = (propertyTax / 100)*houseValue;
+                let maintenance = 10000;
+                let downPaymentPercent = (downPayment/houseValue)*100;
+                if(downPaymentPercent < 10)
+                {
+                    sunkCost = interest + tax + maintenance + 0.04*houseValue;
+                }
+                else if(downPaymentPercent < 15)
+                {
+                    sunkCost = interest + tax + maintenance + 0.031*houseValue;
+                }
+                else if(downPaymentPercent < 20)
+                {
+                    sunkCost = interest + tax + maintenance + 0.028*houseValue;
+                }
+                else
+                {
+                    sunkCost = interest + tax + maintenance + 0.006*houseValue;
+                }
+                document.getElementById('result').innerHTML = `Total sunk cost: $${sunkCost.toFixed(2)}`;
             } else if (mortgageType === 'adjustable') {
-                mortgagePayment = (houseValue * (mortgageRate / 100)) / 12;
+                mdocument.getElementById('result').innerHTML = `Adjustable is unimplemented`;
             }
-
-            // Add property tax to mortgage payment
-            mortgagePayment += propertyTax / 12;
-
-            document.getElementById('result').innerHTML = `Monthly Mortgage Payment: $${mortgagePayment.toFixed(2)}`;
         });
     </script>
 </body>
