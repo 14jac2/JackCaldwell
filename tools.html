@@ -76,7 +76,7 @@
             margin: auto;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -186,23 +186,39 @@
                 let tax = (propertyTax / 100)*houseValue;
                 let maintenance = 10000;
                 let downPaymentPercent = (downPayment/houseValue)*100;
+                let insuranceRate;
                 if(downPaymentPercent < 10)
                 {
-                    sunkCost = interest + tax + maintenance + 0.04*houseValue;
+                    insuranceRate = 0.04;
                 }
                 else if(downPaymentPercent < 15)
                 {
-                    sunkCost = interest + tax + maintenance + 0.031*houseValue;
+                    insuranceRate =  0.031;
                 }
                 else if(downPaymentPercent < 20)
                 {
-                    sunkCost = interest + tax + maintenance + 0.028*houseValue;
+                    insuranceRate = 0.028;
                 }
                 else
                 {
-                    sunkCost = interest + tax + maintenance + 0.006*houseValue;
+                    insuranceRate = 0.006;
                 }
-                document.getElementById('result').innerHTML = `Total sunk cost: $${interest.toFixed(2)}`;
+                let mortgageInsurance = insuranceRate*houseValue/10; // amortise over 10 years
+                sunkCost = interest + tax + maintenance + mortgageInsurance;
+
+                rent = rentalRate*12;
+
+                if(rent > sunkCost)
+                {
+                    let costDifference = rent - sunkCost;
+                    let breakEvenPercentage = (costDifference/houseValue)*100;
+                    document.getElementById('result').innerHTML = `Value of house must increase by at least: $${breakEvenPercentage.toFixed(2)} %`;
+                }
+                else
+                {
+                    document.getElementById('result').innerHTML = `Value of house value does not need to increase`;
+                }
+
             } else if (mortgageType === 'adjustable') {
                 mdocument.getElementById('result').innerHTML = `Adjustable is unimplemented`;
             }
