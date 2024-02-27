@@ -213,9 +213,9 @@
 
                 rent = rentalRate*12;
 
-                if(rent > sunkCost)
+                if(rent < sunkCost)
                 {
-                    let costDifference = rent - sunkCost;
+                    let costDifference =  sunkCost - rent;
                     let breakEvenPercentage = (costDifference/houseValue)*100;
                     document.getElementById('result').innerHTML = `Value of house must increase by at least: $${breakEvenPercentage.toFixed(2)} %`;
                 }
