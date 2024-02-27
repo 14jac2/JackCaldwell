@@ -61,21 +61,14 @@
             flex: 1;
         }
         .footer {
+            margin: 20px;
             height: 50px;
             width: 100%;
         }
-        .instagram-post-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex;
-            height: flex;
-        }
-        .instagram-media {
-            max-width: 540px; 
-            width: 100%;
-            margin: auto;
-        }
         .form-group {
+            margin-bottom: 10px;
+        }
+        .card {
             margin-bottom: 10px;
         }
     </style>
@@ -137,11 +130,11 @@
                         <form id="mortgageForm">
                             <div class="form-group">
                                 <label for="downPayment" class="form-label">Down Payment:</label>
-                                <input type="text" id="downPayment" name="downPayment" class="form-control">
+                                <input type="number" id="downPayment" name="downPayment" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="mortgageRate" class="form-label">Mortgage Rate:</label>
-                                <input type="text" id="mortgageRate" name="mortgageRate" class="form-control">
+                                <input type="number" id="mortgageRate" name="mortgageRate" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="mortgageType" class="form-label">Mortgage Type:</label>
@@ -174,7 +167,53 @@
     </div>
     <!-- End of main -->
 
+    <!-- Start of footer -->
+    <div class="footer text-center">
+        <p>
+            <a href="http://www.linkedin.com/in/jack-caldwell" style="margin-right: 10px;">
+                <img src="images/LI-In-Bug.png" alt="LinkedIn" style="width:30px; height:30px;">
+            </a>
+            905.505.1818
+            <a href="mailto:jack.caldwell@queensu.ca" style="margin-left: 10px;">
+                <img src="images/emailIcon.png" alt="Email" style="width:30px; height:30px;">
+            </a>
+        </p>
+    </div>
+    <!-- End of footer -->
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
     <script>
+        // For highlighting navbar
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current URL
+            var url = window.location.href;
+    
+            // Select the navbar links by their ids
+            var navProjects = document.getElementById('projects');
+            var navWorkExperience = document.getElementById('workExperience');
+            var navPublications = document.getElementById('publications');
+            var navResume = document.getElementById('resume');
+            var navAbout = document.getElementById('about');
+            var navContact = document.getElementById('contact');
+    
+            // Check the URL and add 'active' class to the corresponding nav-link
+            if (url.includes('projects.html')) {
+                navProjects.classList.add('active');
+            } else if (url.includes('workExperience.html')) {
+                navWorkExperience.classList.add('active');
+            } else if (url.includes('publications.html')) {
+                navPublications.classList.add('active');
+            } else if (url.includes('resume.html')) {
+                navResume.classList.add('active');
+            } else if (url.includes('about.html')) {
+                navAbout.classList.add('active');
+            } else if (url.includes('contact.html')) {
+                navContact.classList.add('active');
+            }
+        });
+
         document.getElementById('mortgageForm').addEventListener('submit', function (event) {
             event.preventDefault();
             let downPayment = parseFloat(document.getElementById('downPayment').value);
@@ -186,7 +225,8 @@
 
             // Perform calculation based on mortgage type
             let sunkCost;
-            if (mortgageType === 'fixed') {
+            if (mortgageType === 'fixed') 
+            {
                 let interest = (houseValue - downPayment)*(mortgageRate / 100);
                 let tax = (propertyTax / 100)*houseValue;
                 let maintenance = 10000;
@@ -217,15 +257,17 @@
                 {
                     let costDifference =  sunkCost - rent;
                     let breakEvenPercentage = (costDifference/houseValue)*100;
-                    document.getElementById('result').innerHTML = `Value of house must increase by at least: $${breakEvenPercentage.toFixed(2)} %`;
+                    document.getElementById('result').innerHTML = `Value of house must appreciate by at least: $${breakEvenPercentage.toFixed(2)}%, for buying to be worth it.`;
                 }
                 else
                 {
-                    document.getElementById('result').innerHTML = `Value of house value does not need to increase`;
+                    document.getElementById('result').innerHTML = `Value of house value does not need to appreciate for buying to be worth it.`;
                 }
 
-            } else if (mortgageType === 'adjustable') {
-                mdocument.getElementById('result').innerHTML = `Adjustable is unimplemented`;
+            } 
+            else if (mortgageType === 'adjustable') 
+            {
+                mdocument.getElementById('result').innerHTML = `Adjustable mortgage is unimplemented`;
             }
         });
     </script>
