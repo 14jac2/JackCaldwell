@@ -34,6 +34,9 @@
         a, h1, h4 {
             color: #000000;
         }
+        h6 {
+            font-size: 10px;
+        }
         h2 {
             color: #ffffff;
         }
@@ -130,11 +133,11 @@
                         <form id="mortgageForm">
                             <div class="form-group">
                                 <label for="downPayment" class="form-label">Down Payment:</label>
-                                <input type="number" id="downPayment" name="downPayment" class="form-control">
+                                <input type="text" id="downPayment" name="downPayment" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="mortgageRate" class="form-label">Mortgage Rate:</label>
-                                <input type="number" id="mortgageRate" name="mortgageRate" class="form-control">
+                                <input type="text" id="mortgageRate" name="mortgageRate" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="mortgageType" class="form-label">Mortgage Type:</label>
@@ -145,20 +148,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="houseValue" class="form-label">Value of House:</label>
-                                <input type="number" id="houseValue" name="houseValue" class="form-control">
+                                <input type="text" id="houseValue" name="houseValue" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="propertyTax" class="form-label">Property Tax Rate:</label>
-                                <input type="number" id="propertyTax" name="propertyTax" class="form-control">
+                                <input type="text" id="propertyTax" name="propertyTax" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="rentalRate" class="form-label">Rental Rate:</label>
-                                <input type="number" id="rentalRate" name="rentalRate" class="form-control">
+                                <input type="text" id="rentalRate" name="rentalRate" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Calculate" class="btn btn-primary">
                             </div>
                         </form>
+                        <h6>
+                            Disclaimers: calculated assuming amortizing mortgage insurance premium over 10 years.
+                        </h6>
                         <div id="result"></div>
                     </div>
                 </div>
@@ -227,10 +233,10 @@
             let sunkCost;
             if (mortgageType === 'fixed') 
             {
-                let interest = (houseValue - downPayment)*(mortgageRate / 100);
-                let tax = (propertyTax / 100)*houseValue;
+                let interest = (houseValue - downPayment) * (mortgageRate / 100);
+                let tax = (propertyTax / 100) * houseValue;
                 let maintenance = 10000;
-                let downPaymentPercent = (downPayment/houseValue)*100;
+                let downPaymentPercent = (downPayment / houseValue) * 100;
                 let insuranceRate;
                 if(downPaymentPercent < 10)
                 {
@@ -244,14 +250,22 @@
                 {
                     insuranceRate = 0.028;
                 }
+                else if(downPaymentPercent < 25)
+                {
+                    insuranceRate = 0.024;
+                }
+                else if(downPaymentPercent < 30)
+                {
+                    insuranceRate = 0.017;
+                }
                 else
                 {
                     insuranceRate = 0.006;
                 }
-                let mortgageInsurance = insuranceRate*houseValue/10; // amortise over 10 years
+                let mortgageInsurance = insuranceRate * houseValue / 10; // amortise over 10 years
                 sunkCost = interest + tax + maintenance + mortgageInsurance;
 
-                rent = rentalRate*12;
+                rent = rentalRate * 12;
 
                 if(rent < sunkCost)
                 {
