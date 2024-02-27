@@ -159,6 +159,10 @@
                                 <input type="number" id="propertyTax" name="propertyTax" class="form-control">
                             </div>
                             <div class="form-group">
+                                <label for="rentalRate" class="form-label">Rental Rate:</label>
+                                <input type="number" id="rentalRate" name="rentalRate" class="form-control">
+                            </div>
+                            <div class="form-group">
                                 <input type="submit" value="Calculate" class="btn btn-primary">
                             </div>
                         </form>
@@ -178,6 +182,7 @@
             let mortgageType = document.getElementById('mortgageType').value;
             let houseValue = parseFloat(document.getElementById('houseValue').value);
             let propertyTax = parseFloat(document.getElementById('propertyTax').value);
+            let rentalRate = parseFloat(document.getElementById('rentalRate').value);
 
             // Perform calculation based on mortgage type
             let sunkCost;
