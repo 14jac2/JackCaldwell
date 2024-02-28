@@ -140,6 +140,10 @@
                                 <input type="text" id="mortgageRate" name="mortgageRate" class="form-control">
                             </div>
                             <div class="form-group">
+                                <label for="mortgagePayment" class="form-label">Mortgage Rate:</label>
+                                <input type="text" id="mortgagePayment" name="mortgagePayment" class="form-control">
+                            </div>
+                            <div class="form-group">
                                 <label for="mortgageType" class="form-label">Mortgage Type:</label>
                                 <select id="mortgageType" name="mortgageType" class="form-control">
                                     <option value="fixed">Fixed</option>
@@ -157,6 +161,10 @@
                             <div class="form-group">
                                 <label for="rentalRate" class="form-label">Rental Rate:</label>
                                 <input type="text" id="rentalRate" name="rentalRate" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="holdPeriod" class="form-label">Number of years:</label>
+                                <input type="text" id="holdPeriod" name="holdPeriod" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Calculate" class="btn btn-primary">
@@ -220,57 +228,76 @@
             }
         });
 
-        document.getElementById('mortgageForm').addEventListener('submit', function (event) {
+        function CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, rentalRate, holdPeriod)
+        {
+            // Calculate yearly interest
+            let totalInterest;
+            let principle = (houseValue - downPayment);
+            for (let i = 1; i <= holdPeriod * 12; i++)
+            {
+                interest =  principle * (mortgageRate / 100);
+                principle = principle - (mortgagePayment - interest);
+                totalInterest = totalInterest + interest;
+            }
+
+            // Calculate yearly tax
+            let tax = holdPeriod * ((propertyTax / 100) * houseValue);
+
+            // Calculate maintenance fees
+            let maintenance = (0.03 * houseValue) * holdPeriod;
+            let downPaymentPercent = (downPayment / houseValue) * 100;
+            let insuranceRate;
+            if(downPaymentPercent < 10)
+            {
+                insuranceRate = 0.04;
+            }
+            else if(downPaymentPercent < 15)
+            {
+                insuranceRate =  0.031;
+            }
+            else if(downPaymentPercent < 20)
+            {
+                insuranceRate = 0.028;
+            }
+            else if(downPaymentPercent < 25)
+            {
+                insuranceRate = 0.024;
+            }
+            else if(downPaymentPercent < 30)
+            {
+                insuranceRate = 0.017;
+            }
+            else
+            {
+                insuranceRate = 0.006;
+            }
+            let mortgageInsurance = insuranceRate * houseValue;
+
+            return totalInterest + tax + maintenance + mortgageInsurance;
+        }
+
+        document.getElementById('mortgageForm').addEventListener('submit', function (event) 
+        {
             event.preventDefault();
             let downPayment = parseFloat(document.getElementById('downPayment').value);
             let mortgageRate = parseFloat(document.getElementById('mortgageRate').value);
+            let mortgagePayment = parseFloat(document.getElementById('mortgagePayment').value);
             let mortgageType = document.getElementById('mortgageType').value;
             let houseValue = parseFloat(document.getElementById('houseValue').value);
             let propertyTax = parseFloat(document.getElementById('propertyTax').value);
             let rentalRate = parseFloat(document.getElementById('rentalRate').value);
+            let holdPeriod = parseFloat(document.getElementById('holdPeriod').value);
 
-            // Perform calculation based on mortgage type
-            let sunkCost;
             if (mortgageType === 'fixed') 
             {
-                let interest = (houseValue - downPayment) * (mortgageRate / 100);
-                let tax = (propertyTax / 100) * houseValue;
-                let maintenance = 10000;
-                let downPaymentPercent = (downPayment / houseValue) * 100;
-                let insuranceRate;
-                if(downPaymentPercent < 10)
-                {
-                    insuranceRate = 0.04;
-                }
-                else if(downPaymentPercent < 15)
-                {
-                    insuranceRate =  0.031;
-                }
-                else if(downPaymentPercent < 20)
-                {
-                    insuranceRate = 0.028;
-                }
-                else if(downPaymentPercent < 25)
-                {
-                    insuranceRate = 0.024;
-                }
-                else if(downPaymentPercent < 30)
-                {
-                    insuranceRate = 0.017;
-                }
-                else
-                {
-                    insuranceRate = 0.006;
-                }
-                let mortgageInsurance = insuranceRate * houseValue / 10; // amortise over 10 years
-                sunkCost = interest + tax + maintenance + mortgageInsurance;
+                sunkCost = CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, rentalRate, holdPeriod);
 
-                rent = rentalRate * 12;
+                rentCost = rentalRate * 12 * holdPeriod;
 
-                if(rent < sunkCost)
+                if(rentCost < sunkCost)
                 {
-                    let costDifference =  sunkCost - rent;
-                    let breakEvenPercentage = (costDifference/houseValue)*100;
+                    let costDifference =  sunkCost - rentCost;
+                    let breakEvenPercentage = (costDifference / houseValue) * 100;
                     document.getElementById('result').innerHTML = `Value of house must appreciate by at least: $${breakEvenPercentage.toFixed(2)}%, for buying to be worth it.`;
                 }
                 else
@@ -284,6 +311,7 @@
                 mdocument.getElementById('result').innerHTML = `Adjustable mortgage is unimplemented`;
             }
         });
+
     </script>
 </body>
 
