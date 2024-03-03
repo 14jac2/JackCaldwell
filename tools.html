@@ -228,23 +228,8 @@
             }
         });
 
-        function CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, rentalRate, holdPeriod)
+        function CalculateMortgageInsurance(downPayment, houseValue)
         {
-            // Calculate yearly interest
-            let totalInterest;
-            let principle = (houseValue - downPayment);
-            for (let i = 1; i <= holdPeriod * 12; i++)
-            {
-                interest =  principle * (mortgageRate / 100);
-                principle = principle - (mortgagePayment - interest);
-                totalInterest = totalInterest + interest;
-            }
-
-            // Calculate yearly tax
-            let tax = holdPeriod * ((propertyTax / 100) * houseValue);
-
-            // Calculate maintenance fees
-            let maintenance = (0.03 * houseValue) * holdPeriod;
             let downPaymentPercent = (downPayment / houseValue) * 100;
             let insuranceRate;
             if(downPaymentPercent < 10)
@@ -271,7 +256,74 @@
             {
                 insuranceRate = 0.006;
             }
-            let mortgageInsurance = insuranceRate * houseValue;
+            return insuranceRate * houseValue;
+        }
+
+        function CalculateLTT(value)
+        {
+            let tax = 0;
+            remainder = value - 55000;
+            if(remainder < 0)
+            {
+                tax = value * 0.005;
+            }
+            else
+            {
+                tax = 275;
+                if((remainder - 195000) < 0)
+                {
+                    tax = tax + remainder * 0.01;
+                }
+                else
+                {
+                    tax = tax + 1950;
+                    remainder = remainder - 195000;
+                    if((remainder - 250000) < 0)
+                    {
+                        tax = tax + remainder * 0.015;
+                    }
+                    else
+                    {
+                        tax = tax + 3750;
+                        remainder = remainder - 250000;
+                        if((remainder - 1600000) < 0)
+                        {
+                            tax = tax + remainder * 0.02;
+                        }
+                        else
+                        {
+                            tax = tax + 32000;
+                            remainder = remainder - 1600000;
+                            tax = tax + remainder * 0.025;
+                        }
+                    }
+                }
+            }
+            return tax;
+        }
+
+        function CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, rentalRate, holdPeriod)
+        {
+            // Calculate maintenance fees
+            let maintenance = (0.03 * houseValue) * holdPeriod;
+
+            // Mortgage insurance
+            let mortgageInsurance = CalculateMortgageInsurance(downPayment, houseValue);
+
+            let LTT = CalculateLTT();
+
+            // Calculate yearly interest
+            let totalInterest = 0;
+            let principle = (houseValue - downPayment) + mortgageInsurance + LTT;
+            for (let i = 1; i <= holdPeriod * 12; i++)
+            {
+                interest =  principle * (mortgageRate / 100);
+                principle = principle - (mortgagePayment - interest);
+                totalInterest = totalInterest + interest;
+            }
+
+            // Calculate yearly tax
+            let tax = holdPeriod * ((propertyTax / 100) * houseValue);
 
             return totalInterest + tax + maintenance + mortgageInsurance;
         }
