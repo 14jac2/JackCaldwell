@@ -140,7 +140,7 @@
                                 <input type="text" id="mortgageRate" name="mortgageRate" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="mortgagePayment" class="form-label">Mortgage Rate:</label>
+                                <label for="mortgagePayment" class="form-label">Mortgage Payment:</label>
                                 <input type="text" id="mortgagePayment" name="mortgagePayment" class="form-control">
                             </div>
                             <div class="form-group">
@@ -256,7 +256,8 @@
             {
                 insuranceRate = 0.006;
             }
-            return insuranceRate * houseValue;
+            let insurance = insuranceRate * houseValue;
+            return insurance;
         }
 
         function CalculateLTT(value)
@@ -310,11 +311,12 @@
             // Mortgage insurance
             let mortgageInsurance = CalculateMortgageInsurance(downPayment, houseValue);
 
-            let LTT = CalculateLTT();
+            let landTransferTax = CalculateLTT();
 
             // Calculate yearly interest
             let totalInterest = 0;
-            let principle = (houseValue - downPayment) + mortgageInsurance + LTT;
+            let interest;
+            let principle = (houseValue - downPayment) + mortgageInsurance + landTransferTax;
             for (let i = 1; i <= holdPeriod * 12; i++)
             {
                 interest =  principle * (mortgageRate / 100);
@@ -325,7 +327,10 @@
             // Calculate yearly tax
             let tax = holdPeriod * ((propertyTax / 100) * houseValue);
 
-            return totalInterest + tax + maintenance + mortgageInsurance;
+            let sunkCost = totalInterest + tax + maintenance + mortgageInsurance + landTransferTax;
+            // let sunkCost = totalInterest + tax + maintenance;
+
+            return sunkCost;
         }
 
         document.getElementById('mortgageForm').addEventListener('submit', function (event) 
@@ -342,9 +347,9 @@
 
             if (mortgageType === 'fixed') 
             {
-                sunkCost = CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, rentalRate, holdPeriod);
+                let sunkCost = CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, rentalRate, holdPeriod);
 
-                rentCost = rentalRate * 12 * holdPeriod;
+                let rentCost = rentalRate * 12 * holdPeriod;
 
                 if(rentCost < sunkCost)
                 {
