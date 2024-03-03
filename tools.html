@@ -329,7 +329,8 @@
             let tax = holdPeriod * ((propertyTax / 100) * houseValue);
 
             // let sunkCost = totalInterest + tax + maintenance + mortgageInsurance + landTransferTax;
-            let sunkCost = totalInterest + tax + maintenance;
+            // let sunkCost = totalInterest + tax + maintenance;
+            let sunkCost =  tax + maintenance;
 
             return sunkCost;
         }
