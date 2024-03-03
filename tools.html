@@ -350,11 +350,13 @@
                 {
                     let costDifference =  sunkCost - rentCost;
                     let breakEvenPercentage = (costDifference / houseValue) * 100;
-                    document.getElementById('result').innerHTML = `Value of house must appreciate by at least: $${breakEvenPercentage.toFixed(2)}%, for buying to be worth it.`;
+                    document.getElementById('result').innerHTML = `Value of house must appreciate by at least: $${breakEvenPercentage.toFixed(2)}%, for buying to be worth it.
+                     Sunk cost is $${sunkCost.toFixed(2)}, rental cost is $${rentCost.toFixed(2)}`;
                 }
                 else
                 {
-                    document.getElementById('result').innerHTML = `Value of house value does not need to appreciate for buying to be worth it.`;
+                    document.getElementById('result').innerHTML = `Value of house value does not need to appreciate for buying to be worth it.
+                     Sunk cost is $${sunkCost.toFixed(2)}, rental cost is $${rentCost.toFixed(2)}`;
                 }
 
             } 
