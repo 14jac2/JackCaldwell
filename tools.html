@@ -317,7 +317,8 @@
             let totalInterest = 0;
             let interest;
             // let principle = (houseValue - downPayment) + mortgageInsurance + landTransferTax;
-            let principle = (houseValue - downPayment);
+            let principle = (houseValue - downPayment) + mortgageInsurance;
+            // let principle = (houseValue - downPayment);
             for (let i = 1; i <= holdPeriod * 12; i++)
             {
                 interest =  principle * (mortgageRate / (100*12));
@@ -328,7 +329,8 @@
             // Calculate yearly tax
             let tax = holdPeriod * ((propertyTax / 100) * houseValue);
 
-            let sunkCost = totalInterest + tax + maintenance + mortgageInsurance + landTransferTax;
+            // let sunkCost = totalInterest + tax + maintenance + mortgageInsurance + landTransferTax;
+            let sunkCost = totalInterest + tax + maintenance + mortgageInsurance;
             // let sunkCost = totalInterest + tax + maintenance;
 
             return sunkCost;
