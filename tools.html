@@ -331,6 +331,16 @@
             return sunkCost;
         }
 
+        function CalculateRentalCost(rentalRate, holdPeriod, downPayment)
+        {
+            let rentCost = rentalRate * 12 * holdPeriod;
+            let investmentGains = 0;
+            for (let i = 1; i <= holdPeriod; i++) {
+                investmentGains = investmentGains + ((downPayment + investmentGains) * (mortgageRate / 100));
+            }
+            return (rentCost - investmentGains);
+        }
+
         document.getElementById('mortgageForm').addEventListener('submit', function (event) {
             event.preventDefault();
             let downPayment = parseFloat(document.getElementById('downPayment').value);
@@ -345,7 +355,7 @@
             if (mortgageType === 'fixed') {
                 let sunkCost = CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTaxRate, rentalRate, holdPeriod);
 
-                let rentCost = rentalRate * 12 * holdPeriod;
+                let rentCost = CalculateRentalCost(rentalRate, holdPeriod, downPayment);
 
                 if (rentCost < sunkCost) {
                     let costDifference = sunkCost - rentCost;
@@ -365,7 +375,7 @@
                 for (let i = 1; i <= holdPeriod; i++) {
                     labels.push(`Year ${i}`);
                     sunkCostData.push(CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, rentalRate, i));
-                    rentalCostData.push(rentalRate * 12 * i);
+                    rentalCostData.push(CalculateRentalCost(rentalRate, i, downPayment));
                 }
 
                 let ctx = document.getElementById('myChart').getContext('2d');
