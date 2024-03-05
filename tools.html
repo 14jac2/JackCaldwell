@@ -338,7 +338,8 @@
             for (let i = 1; i <= holdPeriod; i++) {
                 investmentGains = investmentGains + ((downPayment + investmentGains) * (mortgageRate / 100));
             }
-            return (rentCost - investmentGains);
+            let sunkCost = rentCost - investmentGains;
+            return sunkCost;
         }
 
         document.getElementById('mortgageForm').addEventListener('submit', function (event) {
