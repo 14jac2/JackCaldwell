@@ -300,6 +300,10 @@
                      Sunk cost is $${sunkCost.toFixed(2)}, rental cost is $${rentCost.toFixed(2)}`;
                 }
 
+                if (myChart) {
+                    myChart.destroy();
+                }
+
                 // Plotting the results
                 let labels = [];
                 let sunkCostData = [];
