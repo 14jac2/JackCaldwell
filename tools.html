@@ -291,7 +291,7 @@
 
                 for (let i = 1; i <= holdPeriod; i++) {
                     labels.push(`Year ${i}`);
-                    sunkCostData.push(CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTax, i));
+                    sunkCostData.push(CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValue, propertyTaxRate, i));
                     rentalCostData.push(CalculateRentalCost(rentalRate, i, downPayment, mortgageRate));
                 }
 
