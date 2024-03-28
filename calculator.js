@@ -87,10 +87,11 @@ function CalculateRentalCost(rentalRate, holdPeriod, downPayment, mortgageRate)
 {
     let rentCost = 0; // rentalRate * 12 * holdPeriod;
     for (let i = 1; i <= holdPeriod; i++) {
-        rentCost = rentCost + rentalRate;
+        rentCost = rentCost + (12 * rentalRate);
         rentalRate = rentalRate * 1.025;
     }
     let interest = 0;
+    let investmentGains = 0;
     for (let i = 1; i <= holdPeriod; i++) {
         interest = (downPayment + investmentGains) * (mortgageRate / 100)
         investmentGains = investmentGains + interest;
