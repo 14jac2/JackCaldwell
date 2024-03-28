@@ -14,7 +14,7 @@ function CalculateMortgageInsurance(downPayment, houseValue) {
     } else {
         insuranceRate = 0.006;
     }
-    let insurance = insuranceRate * (houseValue-downPayment);
+    let insurance = insuranceRate * (houseValue - downPayment);
     return insurance;
 }
 
@@ -48,7 +48,7 @@ function CalculateLTT(value) {
     return tax;
 }
 
-function CalculateTotalInterestPaid(houseValue, downPayment, mortgageInsurance, landTransferTax, holdPeriod){
+function CalculateTotalInterestPaid(houseValue, downPayment, mortgagePayment, mortgageRate, mortgageInsurance, landTransferTax, holdPeriod){
     let totalInterest = 0;
     let interest;
     let principle = (houseValue - downPayment) + mortgageInsurance + landTransferTax;
@@ -69,7 +69,7 @@ function CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValu
     let landTransferTax = CalculateLTT(houseValue);
 
     // Calculate interest
-    let totalInterest = CalculateTotalInterestPaid(houseValue, downPayment, mortgageInsurance, landTransferTax, holdPeriod);
+    let totalInterest = CalculateTotalInterestPaid(houseValue, downPayment, mortgagePayment, mortgageRate, mortgageInsurance, landTransferTax, holdPeriod);
 
     // Calculate maintenance fees
     let totalMaintenance = (0.03 * houseValue) * holdPeriod;

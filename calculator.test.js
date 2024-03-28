@@ -12,14 +12,24 @@ const {
     expect(CalculateMortgageInsurance(400, 1000)).toBeCloseTo(3.6);
   });
   
-  // Test CalculateLTT function
-  test('CalculateLTT calculates land transfer tax correctly', () => {
+  // Test1 CalculateLTT function
+  test('CalculateLTT calculates land transfer tax correctly test 1', () => {
     expect(CalculateLTT(50000)).toBe(250);
+  });
+
+  // Test2 CalculateLTT function
+  test('CalculateLTT calculates land transfer tax correctly test 2', () => {
+    expect(CalculateLTT(300000)).toBe(2975);
+  });
+
+  // Test3 CalculateLTT function
+  test('CalculateLTT calculates land transfer tax correctly test 3', () => {
+    expect(CalculateLTT(400000)).toBe(4475);
   });
   
   // Test CalculateTotalInterestPaid function
   test('CalculateTotalInterestPaid calculates total interest correctly', () => {
-    expect(CalculateTotalInterestPaid(0, 0, 0, 0, 0, 0)).toBeCloseTo(0);
+    expect(CalculateTotalInterestPaid(0, 0, 0, 0, 0, 0, 0, 0)).toBeCloseTo(0);
   });
   
   // Test CalculateSunkCost function
