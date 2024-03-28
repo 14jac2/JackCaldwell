@@ -85,8 +85,11 @@ function CalculateSunkCost(downPayment, mortgageRate, mortgagePayment, houseValu
 
 function CalculateRentalCost(rentalRate, holdPeriod, downPayment, mortgageRate)
 {
-    let rentCost = rentalRate * 12 * holdPeriod;
-    let investmentGains = 0;
+    let rentCost = 0; // rentalRate * 12 * holdPeriod;
+    for (let i = 1; i <= holdPeriod; i++) {
+        rentCost = rentCost + rentalRate;
+        rentalRate = rentalRate * 1.025;
+    }
     let interest = 0;
     for (let i = 1; i <= holdPeriod; i++) {
         interest = (downPayment + investmentGains) * (mortgageRate / 100)
