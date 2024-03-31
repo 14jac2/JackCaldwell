@@ -145,7 +145,7 @@
 
 
     <!-- Start of main -->
-    <h6>Warning: please do not take any of the recommendation seriously as the code lacks unit tests and V&V.</h6>
+    <h6>Warning: please do not take any of the recommendation seriously as the code lacks proper V&V.</h6>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -193,7 +193,9 @@
                             where \(R\) is the total rental cost, and \(I_{inv}\) is the returns on investing
                             the downpayment at a ROI equal to the mortgage rate.
                         </div>
-                        <div></div>
+                        <div>
+
+                        </div>
                         <form id="mortgageForm">
                             <div class="form-group">
                                 <label for="downPayment" class="form-label">Down Payment:</label>
@@ -234,9 +236,6 @@
                                 <input type="submit" value="Calculate" class="btn btn-primary">
                             </div>
                         </form>
-                        <!-- <h6>
-                            Disclaimers: calculated assuming amortizing mortgage insurance premium over 10 years.
-                        </h6> -->
                         <div id="result"></div>
                         <canvas id="myChart" width="400" height="400"></canvas>
                     </div>
