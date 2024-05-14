@@ -29,9 +29,14 @@ const {
   
   // Test CalculateTotalInterestPaid function
   test('CalculateTotalInterestPaid calculates total interest correctly', () => {
-    expect(CalculateTotalInterestPaid(0, 0, 0, 0, 0, 0, 0, 0)).toBeCloseTo(0);
+    expect(CalculateTotalInterestPaid(100000, 0, 1053.22, 12, 0, 0, 25)).toBeCloseTo(215967.24);
   });
-  
+
+// Test CalculateTotalInterestPaid function
+test('CalculateTotalInterestPaid calculates total interest correctly', () => {
+    expect(CalculateTotalInterestPaid(1000000, 0, 5816.05, 5, 0, 0, 25)).toBeCloseTo(744814.96);
+    });
+      
   // Test CalculateSunkCost function
   test('CalculateSunkCost calculates sunk cost correctly', () => {
     expect(CalculateSunkCost(0, 0, 0, 0, 0, 0)).toBeCloseTo(0);

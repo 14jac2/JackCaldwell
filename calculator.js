@@ -52,10 +52,12 @@ function CalculateTotalInterestPaid(houseValue, downPayment, mortgagePayment, mo
     let totalInterest = 0;
     let interest;
     let principle = (houseValue - downPayment) + mortgageInsurance + landTransferTax;
-    for (let i = 1; i <= holdPeriod; i++) {
-        if(principle > 0){
-            interest = principle * (mortgageRate / 100);
-            principle = principle - ((12 * mortgagePayment) - interest);
+    for (let i = 1; i <= holdPeriod*12; i++) {
+        if(principle > mortgagePayment){
+            // principle = principle - mortgagePayment;
+            interest = principle * (mortgageRate / (12*100));
+            // principle = principle + interest;
+            principle = principle - ((mortgagePayment) - interest);
             totalInterest = totalInterest + interest;
         }
     }
@@ -96,7 +98,7 @@ function CalculateRentalCost(rentalRate, holdPeriod, downPayment, mortgageRate)
         interest = (downPayment + investmentGains) * (mortgageRate / 100)
         investmentGains = investmentGains + interest;
     }
-    let rentalSunkCost = rentCost;// - investmentGains;
+    let rentalSunkCost = rentCost - investmentGains;
     return rentalSunkCost;
 }
 
